@@ -19,7 +19,7 @@ import List from "./pages/list/List";
 import NewList from "./pages/newList/NewList";
 import MovieList from "./pages/movieList/MovieList";
 import { Movie } from "@material-ui/icons";
-import NewMovie from "./pages/newMovie/NewMovie";
+import NewMovie from "./pages/newMovie/newMovie";
 
 function App() {
   const { user } = useContext(AuthContext);

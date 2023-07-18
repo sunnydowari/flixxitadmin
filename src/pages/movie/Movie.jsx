@@ -1,10 +1,36 @@
 import { Link, useLocation } from "react-router-dom";
+import { useState, useContext } from "react";
 import "./movie.css";
 import { Publish } from "@material-ui/icons";
+import { MovieContext } from "../../context/movieContext/MovieContext";
+import {
+  updateMovieStart,
+  updateMovieSuccess,
+  updateMovieFailure,
+} from "../../context/movieContext/MovieActions";
+import { updateMovie } from "../../context/movieContext/apiCalls";
 
 export default function Movie() {
   const location = useLocation();
   const movie = location.movie;
+  const [file, setFile] = useState(null);
+  const { dispatch } = useContext(MovieContext);
+
+  const handleUpdate = () => {
+    const updatedMovie = { ...movie };
+    if (file) {
+      updatedMovie.img = file; // Update the image field with the new file
+    }
+    dispatch(updateMovieStart());
+    updateMovie(
+      movie._id,
+      updatedMovie,
+      dispatch,
+      updateMovieSuccess,
+      updateMovieFailure
+    );
+  };
+
   return (
     <div className="product">
       <div className="productTitleContainer">
@@ -51,19 +77,21 @@ export default function Movie() {
             <label>Limit</label>
             <input type="text" placeholder={movie.limit} />
             <label>Trailer</label>
-            <input type="file" placeholder={movie.trailer} />
+            <input type="file" onChange={(e) => setFile(e.target.files[0])} />
             <label>Video</label>
-            <input type="file" placeholder={movie.video} />
+            <input type="file" onChange={(e) => setFile(e.target.files[0])} />
           </div>
           <div className="productFormRight">
             <div className="productUpload">
               <img src={movie.img} alt="" className="productUploadImg" />
-              <label for="file">
+              <label htmlFor="file">
                 <Publish />
               </label>
               <input type="file" id="file" style={{ display: "none" }} />
             </div>
-            <button className="productButton">Update</button>
+            <button className="productButton" onClick={handleUpdate}>
+              Update
+            </button>
           </div>
         </form>
       </div>

@@ -5,13 +5,14 @@ import { createMovie } from "../../context/movieContext/apiCalls";
 import { MovieContext } from "../../context/movieContext/MovieContext";
 
 export default function NewMovie() {
-  const [movie, setMovie] = useState(null);
+  const [movie, setMovie] = useState({});
   const [img, setImg] = useState(null);
   const [imgTitle, setImgTitle] = useState(null);
   const [imgSm, setImgSm] = useState(null);
   const [trailer, setTrailer] = useState(null);
   const [video, setVideo] = useState(null);
   const [uploaded, setUploaded] = useState(0);
+  const [uploadProgress, setUploadProgress] = useState(0); // New state for progress
 
   const { dispatch } = useContext(MovieContext);
 
@@ -29,6 +30,7 @@ export default function NewMovie() {
         (snapshot) => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setUploadProgress(progress);
           console.log("Upload is " + progress + "% done");
         },
         (error) => {
@@ -64,6 +66,7 @@ export default function NewMovie() {
 
   return (
     <div className="newProduct">
+      {/* ... */}
       <h1 className="addProductTitle">New Movie</h1>
       <form className="addProductForm">
         <div className="addProductItem">
@@ -175,9 +178,14 @@ export default function NewMovie() {
             Create
           </button>
         ) : (
-          <button className="addProductButton" onClick={handleUpload}>
-            Upload
-          </button>
+          <div>
+            {" "}
+            {/* Wrap the button and progress in a div */}
+            <button className="addProductButton" onClick={handleUpload}>
+              Upload
+            </button>
+            <p>{uploadProgress.toFixed(2)}%</p> {/* Display progress */}
+          </div>
         )}
       </form>
     </div>

@@ -12,7 +12,7 @@ export default function WidgetSm() {
         const res = await axios.get("/users?new=true", {
           headers: {
             token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZTZmYzQ2NDk0Mjc3MTYwNDg4MmMxNiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYyNTgzMjMxMSwiZXhwIjoxNjI2MjY0MzExfQ.ATXV-1TTWIGyVBttTQSf0erRWjsgZ8jHQv1ZsUixbng",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTVhMDVjNDJhYWM3M2YxNWE1MGFmZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4OTY3MDkyNywiZXhwIjoxNjkwMTAyOTI3fQ.pqUofIbdEcYL1v7WI0m4aoevS5Ebq_ArRzVok14JQbU",
           },
         });
         setNewUsers(res.data);

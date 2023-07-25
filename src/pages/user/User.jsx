@@ -5,7 +5,7 @@ import {
   PermIdentity,
   PhoneAndroid,
   Publish,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import "./user.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";

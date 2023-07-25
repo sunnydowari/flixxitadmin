@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import "./list.css";
-import { Publish } from "@material-ui/icons";
+import { PublishOutlined } from "@mui/icons-material";
 
 export default function List() {
   const location = useLocation();
@@ -45,7 +45,9 @@ export default function List() {
             <input type="text" placeholder={list.genre} />
           </div>
           <div className="productFormRight">
-            <button className="productButton">Update</button>
+            <PublishOutlined>
+              <button className="productButton">Update</button>
+            </PublishOutlined>
           </div>
         </form>
       </div>

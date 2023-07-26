@@ -1,8 +1,12 @@
-import React from "react";
+import { React, useContext } from "react";
+import { ArrowDropDown } from "@mui/icons-material";
 import "./topbar.css";
 import { NotificationsNone, Language, Settings } from "@mui/icons-material";
+import { AuthContext } from "../../context/authContext/AuthContext";
+import { logout } from "../../context/authContext/AuthActions";
 
 export default function Topbar() {
+  const { dispatch } = useContext(AuthContext);
   return (
     <div className="topbar">
       <div className="topbarWrapper">
@@ -26,6 +30,11 @@ export default function Topbar() {
             alt=""
             className="topAvatar"
           />
+          <ArrowDropDown className="icon" />
+          <div className="options">
+            <span>Settings</span>
+            <span onClick={() => dispatch(logout())}>Logout</span>
+          </div>
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ import {
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import "./user.css";
-import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
